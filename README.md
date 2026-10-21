@@ -393,6 +393,6 @@ twins → ~9.4 MB. Displays/chains load with `crossorigin` so their sweep
 masks reuse the same download (each was fetched twice), and sections.js
 now reads every rect before writing, caches layout-derived values on
 resize, and skips unchanged style writes (no forced layouts per frame).
-3) *App details*: Section 11 (`#app`) had been dropped from index.html in
-269e3ba; it is restored above the footer. Store badges and the QR card stay
-placeholders until the real Google Play / App Store links exist.
+3) *App section*: Section 11 (`#app`) stays out of index.html — the store
+has no app. Its assets and css/app.css rules are kept (the `gja` logo fixes
+included) in case an app ships later.
