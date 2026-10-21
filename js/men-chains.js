@@ -15,11 +15,11 @@
 
   // jewel: the chain draped on the bust inside the display case (where the light-sweep flash plays)
   const chains = [
-    { name: 'Engraved Bar Chain',   image: 'images/men-chains/chain1.png', jewel: [0.29, 0.20, 0.39, 0.40] },
-    { name: 'Textured Link Chain',  image: 'images/men-chains/chain2.png', jewel: [0.29, 0.20, 0.39, 0.40] },
-    { name: 'Classic Curb Chain',   image: 'images/men-chains/chain3.png', jewel: [0.29, 0.20, 0.39, 0.40] },
-    { name: 'Cuban Link Chain',     image: 'images/men-chains/chain4.png', jewel: [0.29, 0.20, 0.39, 0.40] },
-    { name: 'Figaro Chain',         image: 'images/men-chains/chain5.png', jewel: [0.29, 0.20, 0.39, 0.40] },
+    { name: 'Engraved Bar Chain',   image: 'images/men-chains/chain1.webp', jewel: [0.29, 0.20, 0.39, 0.40] },
+    { name: 'Textured Link Chain',  image: 'images/men-chains/chain2.webp', jewel: [0.29, 0.20, 0.39, 0.40] },
+    { name: 'Classic Curb Chain',   image: 'images/men-chains/chain3.webp', jewel: [0.29, 0.20, 0.39, 0.40] },
+    { name: 'Cuban Link Chain',     image: 'images/men-chains/chain4.webp', jewel: [0.29, 0.20, 0.39, 0.40] },
+    { name: 'Figaro Chain',         image: 'images/men-chains/chain5.webp', jewel: [0.29, 0.20, 0.39, 0.40] },
   ];
 
   const SETTINGS = {
@@ -77,8 +77,11 @@
     const shadow = document.createElement('span');
     shadow.className = 'gjmc-display__shadow';
 
+    // CORS mode, like the sweep's CSS mask of the same file below, so the
+    // browser fetches each chain once instead of once per request mode
     const img = new Image();
     img.className = 'gjmc-display__image';
+    img.crossOrigin = 'anonymous';
     img.src = item.image;
     img.alt = `${item.name} display`;
     img.decoding = 'async';
@@ -86,6 +89,7 @@
 
     const reflection = new Image();
     reflection.className = 'gjmc-display__reflection';
+    reflection.crossOrigin = 'anonymous';
     reflection.src = item.image;
     reflection.alt = '';
     reflection.setAttribute('aria-hidden', 'true');

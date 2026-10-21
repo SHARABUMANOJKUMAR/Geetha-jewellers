@@ -221,11 +221,12 @@ html.gji-land .gj-logo img { opacity: 1; transition: opacity 0.35s ease 0.08s; }
   transition: opacity 0.3s ease;
 }
 
+/* the real OVAL medallion (gji-oval: the header logo's mark in a warm glow) */
 .gji__emblem {
-  width: 24vmin;
+  width: 22.5vmin;
   height: auto;
   display: block;
-  margin-bottom: 0.6vmin;
+  margin-bottom: -0.6vmin;
 }
 
 .gji__word {

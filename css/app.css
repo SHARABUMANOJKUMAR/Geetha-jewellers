@@ -329,7 +329,7 @@
   padding: clamp(40px, 5.6svh, 76px) clamp(22px, 4.5vw, 68px) clamp(26px, 3.4svh, 44px);
 }
 
-.gjf__mono { width: clamp(60px, 5.4vw, 88px); margin-bottom: 12px; }
+.gjf__mono { width: clamp(54px, 4.4vw, 72px); margin-bottom: 14px; }
 .gjf__mono img { width: 100%; height: auto; display: block; }
 
 .gjf__name {

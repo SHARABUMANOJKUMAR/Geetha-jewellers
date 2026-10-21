@@ -92,50 +92,87 @@
 
   let raf = 0;
 
+  /* layout-derived values (sticky or not, pinned travel, horizontal track
+     overflow) only change on resize / content reflow, so they are measured
+     there - not re-read every frame, where each read after a style write
+     forces a synchronous layout (the scroll jank).                         */
+  let measured = false;
+  function measure() {
+    measured = true;
+    for (const o of pins) {
+      // a pinned track's own transform is cleared for the read, so its
+      // overflow is measured at rest
+      if (o.scrollx) o.scrollx.style.transform = '';
+      o.pinned = !!o.sticky && getComputedStyle(o.sticky).position === 'sticky';
+      o.travel = o.pinned ? o.sec.offsetHeight - o.sticky.offsetHeight : 0;
+      o.xTravel = o.scrollx ? Math.max(o.scrollx.scrollWidth - o.scrollx.parentElement.clientWidth, 0) : 0;
+      o.last = {};
+    }
+    for (const l of layers) l.strength = parseFloat(l.el.dataset.parallax) || 14;
+  }
+  const remeasure = () => { measured = false; schedule(); };
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(remeasure);
+    pins.forEach((o) => { ro.observe(o.sec); if (o.scrollx) ro.observe(o.scrollx); });
+  }
+
+  // write a style value only when it actually changes (an unchanged write
+  // still invalidates style for the whole subtree)
+  const put = (o, key, el, prop, value) => {
+    if (o.last[key] === value) return;
+    o.last[key] = value;
+    if (prop.startsWith('--')) el.style.setProperty(prop, value);
+    else el.style[prop] = value;
+  };
+
   function apply() {
     raf = 0;
+    if (!measured) measure();
     const vh = window.innerHeight;
+    const still = reduceMotion.matches;
 
-    for (const c of curtains) {
-      const r = c.el.getBoundingClientRect();
+    // read phase: every rect up front, then only writes below
+    const cr = curtains.map((c) => c.el.getBoundingClientRect());
+    const lr = still ? [] : layers.map((l) => l.s.getBoundingClientRect());
+    const pr = pins.map((o) => o.sec.getBoundingClientRect());
+
+    curtains.forEach((c, i) => {
+      const r = cr[i];
+      c.last = c.last || {};
       const raw = clamp((vh - r.top) / vh, 0, 1);
-      c.target.style.setProperty('--cover', (reduceMotion.matches ? raw : smooth01(raw)).toFixed(4));
+      put(c, 'cover', c.target, '--cover', (still ? raw : smooth01(raw)).toFixed(4));
       // "settled" = the section has all but finished rising; its content
       // sequence begins here and completes as the last of the rise lands
       if (r.top <= vh * 0.42) c.el.classList.add('is-settled');
       else if (r.top > vh * 0.72) c.el.classList.remove('is-settled');
-    }
+    });
 
-    if (!reduceMotion.matches) {
-      for (const { s, el } of layers) {
-        const r = s.getBoundingClientRect();
-        if (r.bottom < -120 || r.top > vh + 120) continue;
-        const p = clamp((vh - r.top) / (vh + r.height), 0, 1);   // 0 → entering, 1 → left above
-        const strength = parseFloat(el.dataset.parallax) || 14;
-        el.style.transform = `translate3d(0, ${((p - 0.5) * -2 * strength).toFixed(2)}px, 0)`;
-      }
-    }
+    layers.forEach((l, i) => {
+      const r = lr[i];
+      if (!r || r.bottom < -120 || r.top > vh + 120) return;
+      l.last = l.last || {};
+      const p = clamp((vh - r.top) / (vh + r.height), 0, 1);   // 0 → entering, 1 → left above
+      put(l, 't', l.el, 'transform', `translate3d(0, ${((p - 0.5) * -2 * l.strength).toFixed(1)}px, 0)`);
+    });
 
-    for (const o of pins) {
-      const r = o.sec.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > vh + 200) continue;
+    pins.forEach((o, i) => {
+      const r = pr[i];
+      if (r.bottom < -200 || r.top > vh + 200) return;
       let p;
-      const pinned = o.sticky && getComputedStyle(o.sticky).position === 'sticky';
-      if (pinned) {
+      if (o.pinned) {
         // the approach (section sliding into view) is the first 12% of the
         // timeline, so the editorial establishes as the section enters and the
         // pinned travel drives the remaining 88% (spec: content first).
-        const travel = o.sec.offsetHeight - o.sticky.offsetHeight;
         if (r.top > 0) p = clamp((vh - r.top) / vh, 0, 1) * 0.12;
-        else p = 0.12 + (travel > 2 ? clamp(-r.top / travel, 0, 1) : 1) * 0.88;
-        o.sec.style.setProperty('--pn', smooth01(clamp((p - o.pnStart) / o.pnSpan, 0, 1)).toFixed(4));
+        else p = 0.12 + (o.travel > 2 ? clamp(-r.top / o.travel, 0, 1) : 1) * 0.88;
+        put(o, 'pn', o.sec, '--pn', smooth01(clamp((p - o.pnStart) / o.pnSpan, 0, 1)).toFixed(4));
       } else {
         // unpinned (mobile flow): milestones ride the full traversal, but the
         // hero completes its emergence while its scene is still on screen
         p = clamp(((vh - r.top) / (r.height + vh * 0.5)) * 1.15, 0, 1);
-        o.sec.style.setProperty('--pn', smooth01(clamp((vh - r.top) / (vh * 1.05), 0, 1)).toFixed(4));
+        put(o, 'pn', o.sec, '--pn', smooth01(clamp((vh - r.top) / (vh * 1.05), 0, 1)).toFixed(4));
       }
-      o.sec.style.setProperty('--p', p.toFixed(4));
+      put(o, 'p', o.sec, '--p', p.toFixed(4));
       for (const it of o.items) {
         if (it.at !== null) it.el.classList.toggle('is-past', p >= it.at);
         if (it.until !== null) it.el.classList.toggle('is-out', p >= it.until);
@@ -145,13 +182,12 @@
         // only JS-drive the track while actually pinned (desktop); below the
         // breakpoint data-sticky isn't sticky, so the track reverts to plain
         // native horizontal scrolling (touch/swipe) untouched by this code
-        if (pinned) {
+        if (o.pinned) {
           const wp = clamp((p - o.scrollxStart) / o.scrollxSpan, 0, 1);
-          const travel = o.scrollx.scrollWidth - o.scrollx.parentElement.clientWidth;
-          o.scrollx.style.transform = `translate3d(${(-wp * Math.max(travel, 0)).toFixed(1)}px, 0, 0)`;
-          o.sec.style.setProperty('--xp', wp.toFixed(4));
-        } else if (o.scrollx.style.transform) {
-          o.scrollx.style.transform = '';
+          put(o, 'x', o.scrollx, 'transform', `translate3d(${(-wp * o.xTravel).toFixed(1)}px, 0, 0)`);
+          put(o, 'xp', o.sec, '--xp', wp.toFixed(4));
+        } else {
+          put(o, 'x', o.scrollx, 'transform', '');
         }
       }
       if (o.sweepHost) {
@@ -164,7 +200,7 @@
           o.sweepHost.classList.add('do-sweep');
         }
       }
-    }
+    });
   }
 
   function schedule() {
@@ -173,12 +209,13 @@
 
   if (layers.length || pins.length || curtains.length) {
     window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
+    window.addEventListener('resize', remeasure);
+    window.addEventListener('load', remeasure);
     apply();
   }
 
   reduceMotion.addEventListener?.('change', () => {
-    layers.forEach(({ el }) => { el.style.transform = ''; });
+    layers.forEach((l) => { l.el.style.transform = ''; l.last = {}; });
     schedule();
   });
 

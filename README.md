@@ -375,3 +375,24 @@ Section-10 approved set (the render's footer digits differed; consistency
 wins). Mobile: copy → 2-col features → badges/QR → scene → stacked
 benefits → 2-col footer. Reduced motion: opacity-only. Phase-02 page
 complete — no placeholder remains.
+
+**Client feedback pass** (2026-10-21) — 1) *The logo is the OVAL, everywhere*:
+`tools/build_oval_logo.py` rebuilds the real pearl-oval medallion from the
+header logo (`gj-oval`: FSRCNN-upscaled real pixels, only the rim re-drawn
+crisp) and puts it in every place a logo appeared — the intro (keyframe A's
+round coin on the gold bar, and the lockup emblem `gji-oval`), the offer
+banners (the generated "GJS / A Legacy of Trust" mark → the real lockup
+`gj-lockup`), the "Looking for the Perfect Jewellery?" wall sign, the app
+phone screen + QR centre, the footer and the favicons. It reads the plates
+from 269e3ba via `git show`, so re-running never stacks edits. 2) *Lag*: the
+page loaded ~22–30 MB; `tools/optimize_weight.py` re-encodes every loaded
+WebP once from its approved original (q84, alpha q90, ≥15 % saving or kept),
+caps the hero displays at 1600 px tall, and gives the PNG-only images
+(necklace / men's-chains backgrounds, chain cutouts, glint masks) WebP
+twins → ~9.4 MB. Displays/chains load with `crossorigin` so their sweep
+masks reuse the same download (each was fetched twice), and sections.js
+now reads every rect before writing, caches layout-derived values on
+resize, and skips unchanged style writes (no forced layouts per frame).
+3) *App details*: Section 11 (`#app`) had been dropped from index.html in
+269e3ba; it is restored above the footer. Store badges and the QR card stay
+placeholders until the real Google Play / App Store links exist.

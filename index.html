@@ -12,7 +12,7 @@
 
   <!-- hero assets first -->
   <link rel="preload" as="image" href="images/bg-stage.webp" type="image/webp">
-  <link rel="preload" as="image" href="images/necklace.webp" type="image/webp">
+  <link rel="preload" as="image" href="images/necklace.webp" type="image/webp" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/stage.css?v=20260916b">
   <link rel="stylesheet" href="css/about.css?v=20260917a">
@@ -22,20 +22,20 @@
   <link rel="stylesheet" href="css/men-bracelets.css?v=20260917m">
   <link rel="stylesheet" href="css/men-rings.css?v=20260917c">
   <link rel="stylesheet" href="css/bangles.css?v=20260918a">
-  <link rel="stylesheet" href="css/men-chains.css?v=20260917b">
+  <link rel="stylesheet" href="css/men-chains.css?v=20261021">
   <link rel="stylesheet" href="css/offer.css?v=20260918e">
   <link rel="stylesheet" href="css/reviews.css?v=2">
   <link rel="stylesheet" href="css/store.css?v=20260917e">
   <link rel="stylesheet" href="css/scheme.css?v=4">
   <link rel="stylesheet" href="css/weight-scheme.css?v=5">
-  <link rel="stylesheet" href="css/app.css?v=20260918b">
-  <link rel="stylesheet" href="css/intro.css?v=20260916b">
-  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="preload" as="image" href="images/gji-gold.webp" type="image/webp">
+  <link rel="stylesheet" href="css/app.css?v=20261021">
+  <link rel="stylesheet" href="css/intro.css?v=20261021">
+  <link rel="icon" href="favicon.ico?v=20261021" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20261021">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=20261021">
+  <link rel="preload" as="image" href="images/gji-gold.webp?v=20261021" type="image/webp">
   <link rel="preload" as="image" href="images/gji-hall.webp" type="image/webp">
-  <link rel="preload" as="image" href="images/gji-emblem.webp" type="image/webp">
+  <link rel="preload" as="image" href="images/gji-oval.webp?v=20261021" type="image/webp">
   <link rel="preload" as="image" href="images/logo.webp" type="image/webp">
   <style>#gjintro{position:fixed;inset:0;z-index:999;background:#060302}</style>
 
@@ -67,7 +67,7 @@
        ====================================================================== -->
   <div class="gji" id="gjintro" aria-hidden="true">
     <div class="gji__hall"><img src="images/gji-hall.webp" alt="" decoding="async"></div>
-    <div class="gji__gold"><img src="images/gji-gold.webp" alt="" decoding="async"></div>
+    <div class="gji__gold"><img src="images/gji-gold.webp?v=20261021" alt="" decoding="async"></div>
     <div class="gji__veil"></div>
     <div class="gji__shade"></div>
     <div class="gji__burst"></div>
@@ -75,7 +75,7 @@
     <div class="gji__sparks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="gji__lock">
       <span class="gji__lock-gold">
-        <img class="gji__emblem" src="images/gji-emblem.webp" alt="" decoding="async">
+        <img class="gji__emblem" src="images/gji-oval.webp?v=20261021" alt="" decoding="async">
         <span class="gji__word">Geetha Jewellers</span>
         <span class="gji__since"><i></i>Since 1998<i></i></span>
       </span>
@@ -224,6 +224,7 @@
         <div class="gjn__view">
           <div class="gjn__scene">
             <picture>
+              <source srcset="images/new-necklace-bg.webp?v=20261021" type="image/webp">
               <img src="images/new-necklace-bg.png?v=1" alt="" loading="lazy" decoding="async" width="1664" height="936">
             </picture>
             <div class="gjn__shadow" aria-hidden="true"></div>
@@ -232,7 +233,7 @@
                 <div class="gjn__neck-breathe">
                   <picture>
                     <source srcset="images/gjn-necklace.webp" type="image/webp">
-                    <img src="images/gjn-necklace.png" alt="Signature 22K temple-work gold necklace with rubies, emeralds and pearls" loading="lazy" decoding="async" width="618" height="703">
+                    <img src="images/gjn-necklace.png" crossorigin="anonymous" alt="Signature 22K temple-work gold necklace with rubies, emeralds and pearls" loading="lazy" decoding="async" width="618" height="703">
                   </picture>
                   <span class="gjn__sweep" aria-hidden="true"><i></i></span>
                 </div>
@@ -946,7 +947,7 @@
       <div class="gjmc-stage">
 
         <div class="gjmc-env" aria-hidden="true">
-          <img src="images/men-chains/men-chain-bg.png?v=20260917a" alt="" decoding="async" loading="lazy">
+          <picture><source srcset="images/men-chains/men-chain-bg.webp?v=20261021" type="image/webp"><img src="images/men-chains/men-chain-bg.png?v=20260917a" alt="" decoding="async" loading="lazy"></picture>
         </div>
         <div class="gjmc-light gjmc-light--bloom" aria-hidden="true"></div>
         <div class="gjmc-light gjmc-light--sheen" aria-hidden="true"></div>
@@ -1256,12 +1257,12 @@
 
     <div class="gjo__banner" data-section>
       <picture class="gjo__banner-img gjo__banner-img--d">
-        <source srcset="images/offer-desktop.webp" type="image/webp">
-        <img src="images/offer-desktop.jpg" alt="Special offer: flat 50% off on selected jewellery at Geetha Jewellers" loading="lazy" decoding="async" width="2087" height="753">
+        <source srcset="images/offer-desktop.webp?v=20261021" type="image/webp">
+        <img src="images/offer-desktop.jpg?v=20261021" alt="Special offer: flat 50% off on selected jewellery at Geetha Jewellers" loading="lazy" decoding="async" width="2087" height="753">
       </picture>
       <picture class="gjo__banner-img gjo__banner-img--m">
-        <source srcset="images/offer-mobile.webp" type="image/webp">
-        <img src="images/offer-mobile.jpg" alt="Special offer: flat 50% off on selected jewellery at Geetha Jewellers" loading="lazy" decoding="async" width="941" height="1361">
+        <source srcset="images/offer-mobile.webp?v=20261021" type="image/webp">
+        <img src="images/offer-mobile.jpg?v=20261021" alt="Special offer: flat 50% off on selected jewellery at Geetha Jewellers" loading="lazy" decoding="async" width="941" height="1361">
       </picture>
     </div>
 
@@ -1390,8 +1391,8 @@
     <div class="gjo__d" data-section>
       <div class="gjo__d-media" data-parallax="8" aria-hidden="true">
         <picture>
-          <source srcset="images/gjo-d.webp?v=2" type="image/webp">
-          <img src="images/gjo-d.jpg?v=2" alt="" loading="lazy" decoding="async" width="2087" height="753">
+          <source srcset="images/gjo-d.webp?v=20261021" type="image/webp">
+          <img src="images/gjo-d.jpg?v=20261021" alt="" loading="lazy" decoding="async" width="2087" height="753">
         </picture>
         <p class="gjo__d-brand"><b>Geetha Jewellers</b><i>A Legacy of Brilliance</i></p>
       </div>
@@ -1414,8 +1415,8 @@
 
       <figure class="gjo__d-mob" aria-hidden="true">
         <picture>
-          <source srcset="images/gjo-dm.webp?v=2" type="image/webp">
-          <img src="images/gjo-dm.jpg?v=2" alt="" loading="lazy" decoding="async" width="1473" height="1068">
+          <source srcset="images/gjo-dm.webp?v=20261021" type="image/webp">
+          <img src="images/gjo-dm.jpg?v=20261021" alt="" loading="lazy" decoding="async" width="1473" height="1068">
         </picture>
         <p class="gjo__d-brand"><b>Geetha Jewellers</b><i>A Legacy of Brilliance</i></p>
       </figure>
@@ -1608,6 +1609,72 @@
     </div>
   </section>
 
+  <!-- ======================================================================
+       SECTION 11 · APP DOWNLOAD + FOOTER — FINAL PAGE
+       (Phase-02, additional reference 11 · spec §15)
+       The premium continuation after the store/trust journey: the phones on
+       their engraved podium enter with subtle depth/scale and settle, the
+       feature grid reveals in small staggered groups, store badges + QR stay
+       crisp, the benefits panel follows, and the page closes with a refined
+       cream footer (gold/brown type, thin rules — no black block) whose
+       columns fade calmly upward. A deliberate stopping point.
+       ====================================================================== -->
+  <section class="gja" id="app" aria-label="Download the Geetha Jewellers app">
+
+    <div class="gja__band" data-section>
+      <figure class="gja__scene" data-parallax="9">
+        <picture>
+          <source srcset="images/gja-scene.webp?v=20261021" type="image/webp">
+          <img src="images/gja-scene.png?v=20261021" alt="The Geetha Jewellers app on two gold phones, resting on a marble podium" loading="lazy" decoding="async" width="886" height="1368">
+        </picture>
+        <p class="gja__engrave"><b>Tradition<br>Now a Tap Away</b><i>&#10022;</i></p>
+        <p class="gja__lux"><i>&#10022;</i>Luxury<br>Anytime<br>Anywhere</p>
+      </figure>
+
+      <div class="gja__copy">
+        <p class="gja__eyebrow" data-rv style="--d:.05s">Your Jewellery World<i aria-hidden="true"></i><br>Now Closer Than Ever</p>
+        <h2 class="gja__h2" data-rv style="--d:.13s">Download<br>Our App</h2>
+        <p class="gja__sub" data-rv style="--d:.22s">Timeless Jewellery,<br>Now in Your Hands</p>
+        <p class="gja__desc" data-rv style="--d:.3s">Explore our complete collection, check live gold &amp; silver rates, track your schemes, and enjoy exclusive app-only offers &mdash; anytime, anywhere.</p>
+
+        <ul class="gja__feats">
+          <li data-rv style="--d:.38s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.5 19h13M7.5 16.2v-3.4M11 16.2V10M14.5 16.2v-4.6M8.8 7.6l3.3-2.3 2.2 1.7 3.2-2.5M15.6 4.3l1.9-.1.1 1.9"/></svg></i><b>Live Gold &amp;<br>Silver Rates</b><span>Stay updated<br>in real time</span></li>
+          <li data-rv style="--d:.44s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9.7" cy="14" r="4.1"/><circle cx="14.3" cy="14" r="4.1"/><path d="M12 5.4 10.5 7l1.5 1.6L13.5 7Z"/></svg></i><b>Browse<br>Jewellery Collection</b><span>Explore our<br>entire range</span></li>
+          <li data-rv style="--d:.5s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><circle cx="8.6" cy="8.6" r="2"/><circle cx="15.4" cy="15.4" r="2"/></svg></i><b>Exclusive<br>App-Only Offers</b><span>Special deals<br>just for you</span></li>
+          <li data-rv style="--d:.56s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4.4 18.6 8v8L12 19.6 5.4 16V8Z"/><path d="M5.4 8 12 11.6 18.6 8M12 11.6v8"/></svg></i><b>Order Tracking<br>&amp; History</b><span>Know your order<br>at every step</span></li>
+          <li data-rv style="--d:.62s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5a4.6 4.6 0 0 1 4.6 4.6c0 3.4.9 4.6 1.6 5.4H5.8c.7-.8 1.6-2 1.6-5.4A4.6 4.6 0 0 1 12 5ZM10.4 17.8a1.7 1.7 0 0 0 3.2 0M12 3.4V5"/></svg></i><b>Push Notifications<br>for Offers</b><span>Be the first<br>to know</span></li>
+          <li data-rv style="--d:.68s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19.3c-4.4-3.1-7.1-5.8-7.1-8.8 0-2 1.6-3.5 3.5-3.5 1.5 0 2.8.9 3.6 2.1.8-1.2 2.1-2.1 3.6-2.1 1.9 0 3.5 1.5 3.5 3.5 0 3-2.7 5.7-7.1 8.8Z"/></svg></i><b>Wishlist &amp;<br>Favourites</b><span>Save what<br>you love</span></li>
+        </ul>
+
+        <p class="gja__stores" data-rv style="--d:.78s">
+          <a class="gja__store-btn" href="#app" title="Google Play link coming soon"><svg viewBox="0 0 24 24"><path fill="#3aa757" stroke="none" d="M6.3 2.6 14.9 11l2.7-2.6L7.8 2.7c-.5-.3-1-.3-1.5-.1Z"/><path fill="#2196f3" stroke="none" d="M5.4 3.3c-.3.3-.5.7-.5 1.2v15c0 .5.2.9.5 1.2L14.2 12Z"/><path fill="#e53935" stroke="none" d="M6.3 21.4c.5.2 1 .2 1.5-.1l9.8-5.7-2.7-2.6Z"/><path fill="#ffb300" stroke="none" d="M17.6 8.4 14.9 11l-.7 1 .7 1 2.7 2.6 2.9-1.7c.9-.5.9-1.8 0-2.3Z"/></svg><span><small>GET IT ON</small><b>Google Play</b></span></a>
+          <a class="gja__store-btn" href="#app" title="App Store link coming soon"><svg viewBox="0 0 24 24"><path fill="#1c1a17" stroke="none" d="M15.9 12.7c0-2 1.6-3 1.7-3.1-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6.1 1 8.1.7 1 1.5 2.1 2.5 2 1 0 1.4-.6 2.6-.6 1.2 0 1.5.6 2.6.6s1.8-1 2.4-2c.8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.1Z"/><path fill="#1c1a17" stroke="none" d="M13.9 6.1c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1Z"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+        </p>
+
+        <p class="gja__qr-row" data-rv style="--d:.88s">
+          <img src="images/gja-qr.png?v=20261021" alt="QR code to download the Geetha Jewellers app" loading="lazy" decoding="async" width="216" height="216">
+          <span class="gja__qr-note">Scan the QR code<br>to download the app</span>
+          <span class="gja__vr" aria-hidden="true"></span>
+          <span class="gja__quote">A more beautiful<br>way to stay connected<br>with Geetha Jewellers.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="gja__more" data-section>
+      <div class="gja__more-panel">
+        <div>
+          <p class="gja__more-eyebrow" data-rv style="--d:.05s">Exclusive Benefits</p>
+          <h3 class="gja__more-h" data-rv style="--d:.13s">More Than<br>Just an App</h3>
+          <p class="gja__more-p" data-rv style="--d:.21s">A seamless jewellery experience designed around you.</p>
+        </div>
+        <div class="gja__benefit gja__benefit--first" data-rv style="--d:.32s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="9.5" width="14" height="10" rx="1.2"/><path d="M12 9.5V19.5M5 13h14M12 9.5c-1.6 0-3.4-1-3.4-2.7C8.6 5.6 9.5 5 10.5 5c1.6 0 1.5 2.3 1.5 4.5 0-2.2-.1-4.5 1.5-4.5 1 0 1.9.6 1.9 1.8 0 1.7-1.8 2.7-3.4 2.7Z"/></svg></i><b>App-Only<br>Offers</b><span>Be the first to access<br>special deals</span></div>
+        <div class="gja__benefit" data-rv style="--d:.46s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5h8l4 5.2L12 20 4 10.2 8 5Z"/><path d="M4 10.2h16M8 5l4 5.2L16 5M12 10.2V20"/></svg></i><b>Personalised<br>Recommendations</b><span>Discover jewellery<br>that matches your style</span></div>
+        <div class="gja__benefit" data-rv style="--d:.6s"><i aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="4.5" width="8" height="15" rx="1.6"/><path d="M10.8 6.5h2.4M11.2 17.4h1.6"/></svg></i><b>A Seamless<br>Experience</b><span>Shop, track, save<br>and explore &ndash; all in one place</span></div>
+      </div>
+    </div>
+
+  </section>
+
   <a class="gj-whatsapp" href="https://api.whatsapp.com/send/?phone=919150377014&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="Chat with Geetha Jewellers on WhatsApp" title="Chat on WhatsApp">
     <img src="whatsapp.svg" alt="">
   </a>
@@ -1620,7 +1687,7 @@
   <footer class="gjf" id="contact" data-section aria-label="Geetha Jewellers footer">
     <div class="gjf__grid">
       <div class="gjf__brandcol" data-rv style="--d:.05s">
-        <p class="gjf__mono"><picture><source srcset="images/gja-mono.webp" type="image/webp"><img src="images/gja-mono.png" alt="" loading="lazy" decoding="async"></picture></p>
+        <p class="gjf__mono"><picture><source srcset="images/gj-oval.webp?v=20261021" type="image/webp"><img src="images/gj-oval.png?v=20261021" alt="Geetha Jewellers logo" width="542" height="603" loading="lazy" decoding="async"></picture></p>
         <p class="gjf__name">Geetha Jewellers</p>
         <p class="gjf__tag">A Legacy of Brilliance</p>
         <p class="gjf__about">Your trusted destination for pure gold and diamond jewellery. No 20, Bazar street, Pungavadi Puthur, Attur, Tamil Nadu 636102.</p>
@@ -1673,9 +1740,9 @@
     </div>
   </footer>
 
-  <script src="js/stage.js?v=20260916c" defer></script>
-  <script src="js/men-chains.js?v=20260917a" defer></script>
+  <script src="js/stage.js?v=20261021" defer></script>
+  <script src="js/men-chains.js?v=20261021" defer></script>
   <script src="js/intro.js?v=20260916b" defer></script>
-  <script src="js/sections.js?v=20260918b" defer></script>
+  <script src="js/sections.js?v=20261021" defer></script>
 </body>
 </html>

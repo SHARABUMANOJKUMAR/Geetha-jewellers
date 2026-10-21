@@ -59,6 +59,8 @@
   will-change: transform;
 }
 
+.gjmc-env picture { display: block; height: 100%; }
+
 .gjmc-env img {
   display: block;
   width: 100%;

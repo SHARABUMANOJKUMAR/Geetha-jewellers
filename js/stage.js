@@ -25,11 +25,11 @@
      `jewel`  [x, y, w, h] fractions of the image box that hold the jewellery
               (where the light sweep plays). See images/manifest.json.        */
   const collections = [
-    { name: 'Necklaces',             image: 'images/necklace.webp',     glints: 'images/necklace-glints.png',     size: 1,    jewel: [0.1970, 0.3107, 0.6006, 0.4366] },
-    { name: 'Rings',                 image: 'images/ring.webp',         glints: 'images/ring-glints.png',         size: 0.86, jewel: [0.2807, 0.3597, 0.4373, 0.2888] },
-    { name: 'Earrings',              image: 'images/earrings.webp',     glints: 'images/earrings-glints.png',     size: 0.86, jewel: [0.2742, 0.3191, 0.4439, 0.3495] },
-    { name: 'Bangles',               image: 'images/bangles.webp',      glints: 'images/bangles-glints.png',      size: 0.86, jewel: [0.2285, 0.2880, 0.5091, 0.4057] },
-    { name: 'Diamond Pendant Sets',  image: 'images/pendant-set.webp',  glints: 'images/pendant-set-glints.png',  size: 0.86, jewel: [0.2415, 0.2525, 0.5091, 0.4564] },
+    { name: 'Necklaces',             image: 'images/necklace.webp',     glints: 'images/necklace-glints.webp',     size: 1,    jewel: [0.1970, 0.3107, 0.6006, 0.4366] },
+    { name: 'Rings',                 image: 'images/ring.webp',         glints: 'images/ring-glints.webp',         size: 0.86, jewel: [0.2807, 0.3597, 0.4373, 0.2888] },
+    { name: 'Earrings',              image: 'images/earrings.webp',     glints: 'images/earrings-glints.webp',     size: 0.86, jewel: [0.2742, 0.3191, 0.4439, 0.3495] },
+    { name: 'Bangles',               image: 'images/bangles.webp',      glints: 'images/bangles-glints.webp',      size: 0.86, jewel: [0.2285, 0.2880, 0.5091, 0.4057] },
+    { name: 'Diamond Pendant Sets',  image: 'images/pendant-set.webp',  glints: 'images/pendant-set-glints.webp',  size: 0.86, jewel: [0.2415, 0.2525, 0.5091, 0.4564] },
   ];
 
   const SETTINGS = {
@@ -95,8 +95,11 @@
     const shadow = document.createElement('span');
     shadow.className = 'gj-display__shadow';
 
+    // CORS mode, like the sweep's CSS mask of the same file below, so the
+    // browser fetches each display once instead of once per request mode
     const img = new Image();
     img.className = 'gj-display__image';
+    img.crossOrigin = 'anonymous';
     img.src = item.image;
     img.alt = `${item.name} display`;
     img.decoding = 'async';
@@ -104,6 +107,7 @@
 
     const reflection = new Image();
     reflection.className = 'gj-display__reflection';
+    reflection.crossOrigin = 'anonymous';
     reflection.src = item.image;
     reflection.alt = '';
     reflection.setAttribute('aria-hidden', 'true');
