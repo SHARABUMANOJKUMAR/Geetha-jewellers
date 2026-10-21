@@ -233,10 +233,14 @@
   border-radius: 50%;
 }
 
+/* centred under the badge (beside it, "Drag to Rotate" ran off the right edge) */
 .gjmr__drag {
   position: absolute;
-  left: 91.3%;
-  top: 72.8%;
+  left: calc(84.9% + 2.95cqw);
+  top: calc(70.5% + 6.7cqw);
+  translate: -50% 0;
+  text-align: center;
+  white-space: nowrap;
   margin: 0;
   color: #8a6f3a;
   font-size: clamp(8px, 0.72cqw, 12px);

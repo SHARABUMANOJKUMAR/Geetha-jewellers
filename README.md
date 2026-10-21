@@ -395,4 +395,21 @@ now reads every rect before writing, caches layout-derived values on
 resize, and skips unchanged style writes (no forced layouts per frame).
 3) *App section*: Section 11 (`#app`) stays out of index.html — the store
 has no app. Its assets and css/app.css rules are kept (the `gja` logo fixes
-included) in case an app ships later.
+included) in case an app ships later. Its slot above the footer is now
+**Section 13 · Bridal Consultation** (`#bridal`, css/bridal.css): the
+signature temple necklace in a gold-framed velvet arch + a WhatsApp "Book a
+Bridal Consultation" CTA in the page's enquiry-button style.
+
+**Consistency audit** (2026-10-21, full desktop + mobile sweep) — footer
+phone corrected to +91 99449 93523 (the number the Visit section and the
+Contact button use); Facebook / YouTube icons removed (Instagram + WhatsApp
+remain); the "Scroll down" cue now belongs to the hero only (it sat over
+buttons and copy in every section); "360° · Drag to Rotate" centred under
+its badge (it ran off the right edge); every "Enquire Now" carries the
+WhatsApp mark; the gold-rings heading uses the same serif title case as all
+other collection headings, and "in Every Detail" is cased alike everywhere;
+the men's bracelets no longer cover their heading (desktop + mobile); the
+men's-chains caption has a soft shade behind it; on mobile the bangles copy
+card sits above the bangle and the wall-sign wordmark stays centred; the
+generated "GJS" stamp on three bracelet renders is lifted out
+(`build_oval_logo.py bracelets`).

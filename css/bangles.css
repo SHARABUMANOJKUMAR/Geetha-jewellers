@@ -715,6 +715,7 @@
     background: linear-gradient(155deg, rgba(255, 252, 244, 0.82), rgba(255, 252, 244, 0.32) 70%);
     border-radius: 10px;
     backdrop-filter: blur(2px);
+    z-index: 7;   /* above the bangles: on a narrow stage the hero bangle rose over the Enquire button */
   }
 
   .gjbn__eyebrow { font-size: 10px; margin-bottom: 8px; }

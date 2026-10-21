@@ -528,8 +528,10 @@
 
   .gjo__d-mob { display: block; position: relative; margin: 24px 0 0; container-type: inline-size; }
   .gjo__d-mob img { width: 100%; height: auto; display: block; }
-  .gjo__d-mob .gjo__d-brand { left: 50%; top: 40%; width: 53%; transform: translateX(-50%); }
-  .gjo__d-mob .gjo__d-brand b { font-size: 4.4cqw; }
+  /* sized to its own text so it stays centred (a fixed 53% box let the
+     unbreakable wordmark spill off the right edge of the phone) */
+  .gjo__d-mob .gjo__d-brand { left: 50%; top: 41%; width: max-content; max-width: 92%; transform: translateX(-50%); }
+  .gjo__d-mob .gjo__d-brand b { font-size: 3.9cqw; }
   .gjo__d-mob .gjo__d-brand i { font-size: 2.3cqw; }
 }
 

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Geetha Jewellers — SECTION 13 · Bridal Consultation
+   --------------------------------------------------------------------------
+   The closing invitation before the footer: the signature temple necklace
+   (images/gjn-necklace, the same file the Premium Collection loads, so no
+   extra download) set in a gold-framed maroon velvet arch, beside a short
+   bridal note and a WhatsApp "Book a Bridal Consultation" CTA styled like
+   every other enquiry button on the page. The band carries the Weight
+   Scheme section's cream on into the footer's. Reveal: the shared
+   data-section → .is-in + data-rv pattern; reduced motion is opacity-only.
+   ========================================================================== */
+
+.gjbd {
+  --gjbd-gold: #a9853c;
+  --gjbd-ink: #5d4520;
+  --gjbd-body: #6f6046;
+  position: relative;
+  background: linear-gradient(180deg, #f1e6d5 0%, #f7f0e3 38%, #fbf7ec 100%);
+  font-family: "Jost", "Segoe UI", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.gjbd__band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(72px, 8.5vw, 120px) clamp(22px, 5vw, 64px) clamp(76px, 8vw, 112px);
+}
+
+/* ------------------------------------------------------------- the arch */
+.gjbd__art {
+  position: relative;
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 440px);
+}
+
+/* an outer hairline arch, offset like the gold frames elsewhere on the page */
+.gjbd__art::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 1px solid rgba(169, 133, 60, 0.5);
+  border-radius: 999px 999px 22px 22px;
+  pointer-events: none;
+}
+
+.gjbd__arch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 14px 14px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 46% at 50% 38%, rgba(255, 196, 120, 0.22), rgba(255, 196, 120, 0) 70%),
+    radial-gradient(ellipse 120% 90% at 50% 30%, #7b1e2c 0%, #5a1420 48%, #2f0a12 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(226, 190, 118, 0.75),
+    inset 0 0 0 7px rgba(47, 10, 18, 0.35),
+    inset 0 0 0 8px rgba(226, 190, 118, 0.35),
+    0 26px 50px rgba(90, 40, 20, 0.22);
+}
+
+/* the velvet's soft fold of light */
+.gjbd__arch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0) 30%, rgba(255, 225, 190, 0.08) 48%, rgba(255, 255, 255, 0) 62%);
+  pointer-events: none;
+}
+
+.gjbd__arch picture { position: absolute; left: 11%; right: 11%; top: 17%; display: block; }
+.gjbd__arch img { display: block; width: 100%; height: auto; }
+
+/* ------------------------------------------------------------ the copy */
+.gjbd__copy { max-width: 520px; }
+
+.gjbd__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  font-size: clamp(10.5px, 0.85vw, 12.5px);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8a6f3a;
+}
+
+.gjbd__kicker::after { content: ""; width: clamp(28px, 3vw, 46px); height: 1px; background: rgba(169, 133, 60, 0.65); }
+
+.gjbd__h2 {
+  margin: 0 0 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 1.06;
+  color: var(--gjbd-ink);
+}
+
+.gjbd__desc {
+  margin: 0 0 22px;
+  font-size: clamp(14px, 1.05vw, 16.5px);
+  line-height: 1.75;
+  color: var(--gjbd-body);
+}
+
+.gjbd__pieces {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 1.3vw, 20px);
+  color: #8a6a32;
+}
+
+.gjbd__pieces li + li::before { content: "\25c6"; margin-right: 14px; font-style: normal; font-size: 0.5em; vertical-align: middle; color: rgba(169, 133, 60, 0.7); }
+
+.gjbd__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin: 0; }
+
+/* the page's enquiry-button language: gold hairline, uppercase, WhatsApp mark */
+.gjbd__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(12px, 1vw, 16px) clamp(20px, 1.9vw, 30px);
+  border: 1px solid rgba(169, 133, 60, 0.75);
+  color: var(--gjbd-ink);
+  background: rgba(255, 252, 244, 0.55);
+  text-decoration: none;
+  font-size: clamp(11px, 0.85vw, 13.5px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+.gjbd__cta:hover, .gjbd__cta:focus-visible { background: var(--gjbd-gold); border-color: var(--gjbd-gold); color: #fffcf4; }
+
+.gjbd__link {
+  font-size: clamp(12.5px, 0.95vw, 14.5px);
+  letter-spacing: 0.06em;
+  color: #8a6f3a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(169, 133, 60, 0.45);
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.gjbd__link:hover, .gjbd__link:focus-visible { color: var(--gjbd-ink); border-color: var(--gjbd-gold); }
+
+.gjbd__note {
+  margin: 22px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(15px, 1.15vw, 18px);
+  color: #8a7a5c;
+}
+
+/* --------------------------------------------------------------- reveal */
+.js .gjbd [data-rv] {
+  transition: opacity 0.85s ease var(--d, 0s), transform 1s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
+}
+
+.js .gjbd:not(.is-in) [data-rv] { opacity: 0; transform: translateY(16px); }
+.js .gjbd:not(.is-in) .gjbd__art[data-rv] { transform: translateY(22px) scale(0.97); }
+
+/* --------------------------------------------------------------- compact */
+@media (max-width: 860px) {
+  .gjbd__band { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+  .gjbd__art { width: min(78%, 340px); }
+  .gjbd__copy { justify-self: center; }
+  .gjbd__kicker { justify-content: center; }
+  .gjbd__kicker::before { content: ""; width: clamp(28px, 3vw, 46px); height: 1px; background: rgba(169, 133, 60, 0.65); }
+  .gjbd__pieces, .gjbd__actions { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .gjbd [data-rv] { transition: opacity 0.6s ease !important; transform: none !important; }
+}

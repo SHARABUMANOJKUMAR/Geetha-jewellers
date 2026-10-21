@@ -204,18 +204,15 @@
   background: rgba(169, 133, 60, 0.7);
 }
 
+/* the same serif title-case heading as every other collection section */
 .gjr__title {
   margin: 0 0 1vw;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 600;
   font-size: clamp(30px, 3.4vw, 58px);
   line-height: 1.05;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: linear-gradient(160deg, #8a6420 10%, #b98f3e 45%, #6f4f1a 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  letter-spacing: 0.01em;
+  color: #5d452a;
 }
 
 .gjr__orn {

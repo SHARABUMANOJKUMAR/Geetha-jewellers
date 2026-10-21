@@ -337,12 +337,35 @@ def build_app(oval):
     print("  gja-qr         216x216")
 
 
+# ------------------------------------------------------------------ men's bracelets
+def build_bracelets():
+    """three bracelet renders carried a generated "GJS" stamp on one link -
+    lifted out, leaving the plain brushed-gold plate"""
+    print("bracelets:")
+    for name, box in [("gjbr-b3", (284, 374, 339, 436)), ("gjbr-b4", (278, 326, 322, 380)),
+                      ("gjbr-b5", (350, 434, 394, 478))]:
+        src = from_git(f"images/{name}.png").convert("RGBA")
+        rgb = np.asarray(src.convert("RGB")).copy()
+        al = np.asarray(src.getchannel("A"))
+        m = ink_mask(rgb, box, thresh=7, sigma=5, dilate=5)
+        x0, y0, x1, y1 = box
+        keep = np.zeros_like(m)
+        keep[y0 - 4:y1 + 4, x0 - 4:x1 + 4] = 255
+        m = cv2.bitwise_and(m, keep)
+        rgb = cv2.inpaint(rgb, m, 6, cv2.INPAINT_TELEA)
+        out = Image.fromarray(np.dstack([rgb, al]), "RGBA")
+        out.save(os.path.join(OUT, f"{name}.png"), optimize=True)
+        out.save(os.path.join(OUT, f"{name}.webp"), "WEBP", quality=84, alpha_quality=90, method=6)
+        print(f"  {name}")
+
+
 if __name__ == "__main__":
     import sys
     oval = build_medallion()
-    steps = sys.argv[1:] or ["intro", "offer", "wall", "icons", "app"]
+    steps = sys.argv[1:] or ["intro", "offer", "wall", "icons", "app", "bracelets"]
     if "intro" in steps: build_intro(oval)
     if "offer" in steps: build_offer(oval)
     if "wall" in steps: build_wall_sign(oval)
     if "icons" in steps: build_icons(oval)
     if "app" in steps: build_app(oval)
+    if "bracelets" in steps: build_bracelets()

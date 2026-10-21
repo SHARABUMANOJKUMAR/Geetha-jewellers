@@ -125,8 +125,8 @@
 .gjbr__piece {
   position: absolute;
   left: 50%;
-  top: 52%;
-  width: 24%;
+  top: 55%;      /* clear of the title above (it used to cover "Detail") */
+  width: 21%;
   margin: 0;
   z-index: 3;
   transform-origin: 50% 70%;
@@ -175,7 +175,7 @@
 .gjbr__copy {
   position: absolute;
   left: 50%;
-  top: 18%;
+  top: 15%;
   transform: translate(-50%, -50%);
   width: min(90%, 420px);
   z-index: 4;
@@ -262,7 +262,7 @@
   .gjbr__rock--l { left: calc(2% - var(--open) * 14%); }
   .gjbr__rock--r { right: calc(2% - var(--open) * 14%); }
   .gjbr { --gjbr-slot: 27cqw; }
-  .gjbr__piece { width: 27%; }
+  .gjbr__piece { width: 20%; }   /* the 16:9 stage is far wider than a phone: 27% overflowed it */
   .gjbr__piece figcaption { font-size: 11px; }
 }
 

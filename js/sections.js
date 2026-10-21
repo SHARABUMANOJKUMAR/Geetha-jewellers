@@ -38,12 +38,15 @@
 
   sections.forEach((s) => io.observe(s));
 
+  // the "scroll down" cue belongs to the hero only: it fades as soon as the
+  // first section after the hero comes up (it used to stay pinned over every
+  // section's buttons and copy) and returns when the visitor is back on top
   const scrollHint = document.querySelector('.gj-scroll-hint');
-  const finalSection = document.querySelector('footer.gjf');
-  if (scrollHint && finalSection) {
+  const afterHero = document.querySelector('#our-story');
+  if (scrollHint && afterHero) {
     new IntersectionObserver(([entry]) => {
-      scrollHint.classList.toggle('is-ending', entry.isIntersecting);
-    }, { threshold: 0.01 }).observe(finalSection);
+      scrollHint.classList.toggle('is-ending', entry.isIntersecting || entry.boundingClientRect.top < 0);
+    }, { threshold: 0 }).observe(afterHero);
   }
 
   /* gentle parallax -------------------------------------------------------- */
